@@ -12,16 +12,18 @@ export default function ToDo(){
         setTodo(oldTask=>{
            setTask("")
            return [...oldTask,task]
-        })
+        }) 
+    }
+    
+    function value(e){
+        setTask(e.target.value) 
     }
     
     return <>
         <div>
             <h1>todo app</h1>
             <form>
-                <input type="text" value={task} onChange={e=>{
-                    setTask(e.target.value)
-                }}/>
+                <input type="text" value={task} onChange={value}/>
                 <button type='submit' onClick={create}>
                     <FontAwesomeIcon icon={faAdd} />
                 </button>
@@ -36,6 +38,7 @@ export default function ToDo(){
         </main>
       </>
 }
+
 
 //value={task} get the value from input 
 //"onChange"=>{e=>{setTask(e.target.value)} use this to map the value to setTask()
