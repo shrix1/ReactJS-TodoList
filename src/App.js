@@ -1,7 +1,8 @@
-import React,{useState} from "react";
+import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAdd} from '@fortawesome/free-solid-svg-icons'
 import './App.css';
+import {useState ,useEffect} from "react";
 
 export default function ToDo(){
    const [todo,setTodo] = useState([])
