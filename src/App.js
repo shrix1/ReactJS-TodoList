@@ -1,45 +1,55 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faAdd} from '@fortawesome/free-solid-svg-icons'
+import {faAdd ,faTrash} from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 import {useState} from "react";
 
+let indexID = 0;
+
 export default function ToDo(){
     const [todo,setTodo] = useState([])
-    const [task,setTask] = useState("")
-    
-    const create = e => {
-        setTask(e.target.value) 
+    const [value,setValue] = useState("")
+
+    const getValue = e =>{
+      setValue(e.target.value)
+    }
+
+    const render = e =>{
+        e.preventDefault()
+        setTodo(oldTodo=>{
+            setValue("")
+            return [...oldTodo,{todo: value, id: indexID++}]
+        })
+    }
+
+    const delTodo = itemID =>{
+        setTodo(oldTodo=>oldTodo.filter(i => i.id !== itemID))
     }
     
-    const diplayTodo = e =>{
-        e.preventDefault()    
-        setTodo(oldTask => {
-            setTask("")
-            return [...oldTask,task]
-        })
-    } 
 
     return <>
         <div>
-            <h1>Todo app</h1>
-            <form onSubmit={diplayTodo}>
-
-                <input type="text" value={task} onChange={create}/>
-
-                <button type='submit'>
-                    <FontAwesomeIcon icon={faAdd} />
-                </button>
-                
-            </form> 
+            <h1>React Todo App</h1>
+            <form onSubmit={render}>
+                <input type="text" onChange={getValue} value={value}/>
+                <button type="submit">
+                    <FontAwesomeIcon icon={faAdd}/>
+                 </button>
+            </form>
         </div>
-        
         <main>
-           <ul>
-                {todo.map((elem) =>{
-                    return <li>{elem}</li>
+            <ul>
+                {todo.map((item)=>{
+                    return<>
+                    <div key={item.id}>
+                        <li>{item.todo} {item.id}</li>
+                        <button onClick={()=>delTodo(item.id)} >
+                            <FontAwesomeIcon icon={faTrash}/>
+                        </button>
+                    </div>
+                    </> 
                 })}
-           </ul>
-        </main>
+            </ul>
+         </main>
     </>
 }
