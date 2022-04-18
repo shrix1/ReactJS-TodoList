@@ -22,9 +22,9 @@ export default function ToDo(){
         })
     }
 
-    const delTodo = itemID =>{
-        setTodo(oldTodo=>oldTodo.filter(i => i.id !== itemID))
-    }
+    // const delTodo = itemID =>{
+    //     setTodo(oldTodo=>oldTodo.filter(i => i.id !== itemID))
+    // }
     
     return <>
         <div>
@@ -42,7 +42,7 @@ export default function ToDo(){
                     return<>
                     <div key={item.id}>
                         <li>{item.todo} {item.id}</li>
-                        <button onClick={()=>delTodo(item.id)} >
+                        <button /*onClick={()=>delTodo(item.id)}*/ >
                             <FontAwesomeIcon icon={faTrash}/>
                         </button>
                     </div>
