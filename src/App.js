@@ -26,7 +26,6 @@ export default function ToDo(){
         setTodo(oldTodo=>oldTodo.filter(i => i.id !== itemID))
     }
     
-
     return <>
         <div>
             <h1>React Todo App</h1>
