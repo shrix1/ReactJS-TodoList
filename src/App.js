@@ -46,16 +46,18 @@ export default function ToDo(){
         <main>
             <ul>
                 {todo.map((item)=>{
-                    return<>
+                    return (
                     <div key={item.id}>
                         <li>{item.todo} {item.id}</li>
                         <button onClick={()=>delTodo(item.id)} >
                             <FontAwesomeIcon icon={faTrash}/>
                         </button>
                     </div>
-                    </> 
+                    )
                 })}
             </ul>
          </main>
     </>
 }
+
+
