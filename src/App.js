@@ -25,7 +25,7 @@ export default function ToDo(){
         })
     }
     
-    //deleting todos based on there index
+    //deleting todos based on there index 
     const delTodo = itemID =>{
         setTodo(oldTodo=>oldTodo.filter(i => { 
             console.log(itemID,i.id)
