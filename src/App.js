@@ -45,7 +45,7 @@ export default function ToDo(){
                 <input type="text" onChange={getValue} value={value}/>
                 <button type="submit">
                     <FontAwesomeIcon icon={faAdd}/>
-                 </button>
+                </button>
             </form>
         </div>
         <main>
