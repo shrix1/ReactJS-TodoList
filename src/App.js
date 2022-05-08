@@ -28,9 +28,14 @@ export default function ToDo(){
     //deleting todos based on there index 
     const delTodo = itemID =>{
         setTodo(oldTodo=>oldTodo.filter(i => { 
-            console.log(itemID,i.id)
+            //console.log(itemID,i.id)
             return i.id !== itemID
         }))
+        //this take oldtodo from an arr and 
+        //then filter them by => i as a para to find id of 
+        //that oldtodo and comparing the ->i-id (spectific el clicked id value)  
+        //and ->itemID (item extaxt id <contain all id of oldTodo> ) 
+        //as a para in main func call.
     }
     
     return <>
