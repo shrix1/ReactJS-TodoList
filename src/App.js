@@ -1,12 +1,11 @@
-import { useState, React } from "react";
+import { useState, React, createContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAdd,
-  faTrash,
-  faCrosshairs,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import Todos from "./Todo";
 
 let index = 0;
+export const AppContext = createContext();
+
 const Todo = () => {
   const [todo, setTodo] = useState([]);
   const [value, setValue] = useState("");
@@ -35,41 +34,31 @@ const Todo = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={render}>
-        <input
-          type="text"
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-        />
-        <button className="text-white">
-          <FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>
-        </button>
-      </form>
+    <AppContext.Provider value={{ done, remove }}>
+      <div>
+        <form onSubmit={render}>
+          <input
+            type="text"
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+          />
+          <button className="text-white">
+            <FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>
+          </button>
+        </form>
 
-      {todo.map((items) => {
-        return (
-          <div
-            className="text-white flex gap-3"
-            key={items.id}
-            style={{
-              color: items.complete ? "red" : "black",
-            }}
-          >
-            <h6>{items.todo}</h6>
-            <h6>{items.id}</h6>
-            <button onClick={() => done(items.id)}>
-              {" "}
-              <FontAwesomeIcon icon={faCrosshairs}></FontAwesomeIcon>
-            </button>
-            <button onClick={() => remove(items.id)}>
-              {" "}
-              <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-            </button>
-          </div>
-        );
-      })}
-    </div>
+        {todo.map((items) => {
+          return (
+            <Todos
+              todo={items.todo}
+              id={items.id}
+              complete={items.complete}
+              key={items.id}
+            />
+          );
+        })}
+      </div>
+    </AppContext.Provider>
   );
 };
 
