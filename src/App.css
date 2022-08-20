@@ -1,5 +1,7 @@
 body {
-  background-color: rgb(255, 255, 255);
-  color: rgb(60, 145, 230);
+  background-color: rgb(60, 145, 230);
   font-family: "poppins";
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
