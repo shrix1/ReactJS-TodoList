@@ -9,11 +9,12 @@ const Todos = (props) => {
     <div
       className="text-white flex gap-3"
       style={{
-        color: props.complete ? "red" : "black",
+        backgroundColor: props.complete ? "green" : "transparent",
+        display: "flex",
       }}
     >
       <h6>{props.todo}</h6>
-      <h6>{props.id}</h6>
+      {/* <h6>{props.id}</h6> */}
       <button onClick={() => done(props.id)}>
         {" "}
         <FontAwesomeIcon icon={faCrosshairs}></FontAwesomeIcon>
