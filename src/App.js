@@ -25,7 +25,7 @@ const Todo = () => {
     setTodo(
       todo.map((i) => {
         if (i.id === ids) {
-          return { ...i, complete: true };
+          return { ...i, complete: !i.complete };
         } else {
           return i;
         }
