@@ -12,8 +12,7 @@ const Todo = () => {
 
   const render = (e) => {
     e.preventDefault();
-    const todoList = { todo: value, id: index++, complete: false };
-    setTodo([...todo, todoList]);
+    setTodo([...todo, { todo: value, id: index++, complete: false }]);
     setValue("");
   };
 
